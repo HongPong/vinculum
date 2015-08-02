@@ -20,6 +20,11 @@ function vinculum_webmention_vinculum_handler() {
 
 /**
  * Implements hook_vinculum_send().
+ * @param string $target
+ *   Absolute URL of the remote article.
+ * @param string $source
+ *   Absolute URL of the local page.
+ * @param object $node
  */
 function vinculum_webmention_vinculum_send($target, $source, $node) {
   return VinculumWebmentionHandler::send($source, $target);
