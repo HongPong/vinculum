@@ -54,6 +54,12 @@ define('VINCULUM_ERROR_LOCAL_NODE_REFBACK_NOT_ALLOWED', 2);
 // The ref-back has previously been registered.
 define('VINCULUM_ERROR_REFBACK_ALREADY_REGISTERED', 3);
 
+define('VINCULUM_ERROR_LOCAL_NODE_VINCULUM_NOT_ALLOWED', 4);
+
+// the following were missing
+define('VINCULUM_ERROR_VINCULUM_ALREADY_REGISTERED', 5);
+
+define('VINCULUM_ERROR_REMOTE_URL_NOT_FOUND', 6);
 /**
  * Implements hook_views_api().
  */
@@ -499,7 +505,14 @@ function vinculum_send_single_vinculum($source, $target, $node) {
       // Actions are implemented through:
       // - vinculum_rules - integrates with the rules module.
       // Treat vinculum as vinculum object.
-      $vinculum=new vinculum((int)$node->nid, $target, $handler->module);
+      $vinc_params = array(
+        'nid'     => (int) $node->nid,
+        'id'      => (int) 5, // @TODO make incrementer
+        'url'     => $target,
+        'handler' => $handler->module,
+        'created' => time()
+      );
+      $vinculum = new VinculumSent($vinc_params);
       module_invoke_all('vinculum_sent_action', $vinculum);
       return TRUE;
     }

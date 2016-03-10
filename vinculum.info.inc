@@ -12,7 +12,7 @@ function vinculum_entity_property_info() {
   $info = array();
 
   // Add meta-data about the basic node properties.
-  $properties = &$info['vinculum_received']['properties'];
+  $vinculum_received_properties = &$info['vinculum_received']['properties'];
 
   // Properties:
   // - Node NID
@@ -22,50 +22,104 @@ function vinculum_entity_property_info() {
   // - IP address
   // - Timestamp
 
-  $properties['node'] = array(
+  $vinculum_received_properties['node'] = array(
     'label' => t("Node"),
     'type' => 'node',
     'description' => t("The node referenced in a ref-back."),
     'schema field' => 'nid',
     'required' => TRUE,
   );
-  $properties['url'] = array(
+  $vinculum_received_properties['url'] = array(
     'label' => t("URL"),
     'type' => 'uri',
     'description' => t("The URL of the remote article."),
     'schema field' => 'url',
     'required' => TRUE,
   );
-  $properties['title'] = array(
+  $vinculum_received_properties['title'] = array(
     'label' => t("Title"),
     'type' => 'text',
     'description' => t("The title of the remote article."),
     'schema field' => 'title',
   );
-  $properties['excerpt'] = array(
+  $vinculum_received_properties['excerpt'] = array(
     'label' => t("Excerpt"),
     'type' => 'text',
     'description' => t("An excerpt of the remote article."),
     'schema field' => 'excerpt',
   );
-  $properties['ip_address'] = array(
+  $vinculum_received_properties['ip_address'] = array(
     'label' => t("IP Address"),
     'type' => 'text',
     'description' => t("The IP address of the computer the ref-back was posted from."),
     'schema field' => 'origin_ip',
   );
-  $properties['created'] = array(
+  $vinculum_received_properties['created'] = array(
     'label' => t("Date received"),
     'type' => 'date',
     'description' => t("The date the ref-back was received."),
     'schema field' => 'created',
   );
-  $properties['handler'] = array(
+  $vinculum_received_properties['handler'] = array(
     'label' => t("Ref-back module"),
     'type' => 'text',
     'description' => t("The module which recorded the ref-back."),
     'schema field' => 'handler',
   );
 
+  $vinculum_sent_properties = &$info['vinculum_sent']['properties'];
+  // Properties:
+  // - Node NID
+  // - URL of the article which linked to us
+  // - Title   (extracted from the <title> tag)
+  // - Excerpt (extracted from the body content)
+  // - IP address
+  // - Timestamp
+
+  $vinculum_sent_properties['node'] = array(
+    'label' => t("Node"),
+    'type' => 'node',
+    'description' => t("The node referenced in a ref-back."),
+    'schema field' => 'nid',
+    'required' => TRUE,
+  );
+  $vinculum_sent_properties['url'] = array(
+    'label' => t("URL"),
+    'type' => 'uri',
+    'description' => t("The URL of the remote article."),
+    'schema field' => 'url',
+    'required' => TRUE,
+  );
+  $vinculum_sent_properties['title'] = array(
+    'label' => t("Title"),
+    'type' => 'text',
+    'description' => t("The title of the remote article."),
+    'schema field' => 'title',
+  );
+  $vinculum_sent_properties['excerpt'] = array(
+    'label' => t("Excerpt"),
+    'type' => 'text',
+    'description' => t("An excerpt of the remote article."),
+    'schema field' => 'excerpt',
+  );
+//  $vinculum_sent_properties['ip_address'] = array(
+//    'label' => t("IP Address"),
+//    'type' => 'text',
+//    'description' => t("The IP address of the computer the ref-back was posted from."),
+//    'schema field' => 'origin_ip',
+//  );
+  $vinculum_sent_properties['created'] = array(
+    'label' => t("Date received"),
+    'type' => 'date',
+    'description' => t("The date the ref-back was received."),
+    'schema field' => 'created',
+  );
+  $vinculum_sent_properties['handler'] = array(
+    'label' => t("Ref-back module"),
+    'type' => 'text',
+    'description' => t("The module which recorded the ref-back."),
+    'schema field' => 'handler',
+
+  
   return $info;
 }

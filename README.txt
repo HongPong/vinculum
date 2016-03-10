@@ -11,3 +11,8 @@ Trackback specification
 
 Webmention specification
 - http://webmention.org
+
+Parser.php library for JSON microformat conversion from indieweb
+via https://github.com/indieweb/php-mf2
+License CC0
+https://github.com/indieweb/php-mf2/blob/master/LICENSE.md
