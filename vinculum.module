@@ -91,6 +91,22 @@ function vinculum_entity_info() {
       'uri callback' => 'entity_class_uri',
       'module' => 'vinculum',
     ),
+    'vinculum_sent' => array(
+      'label' => t('Sent Vinculum'),
+      'plural label' => t('Sent Vinculums'),
+      'description' => t('Sent pingbacks, trackbacks, and other referral types.'),
+      'entity class' => 'VinculumSent',
+      'controller class' => 'EntityAPIController',
+      'base table' => 'node_vinculum_sent',
+      'fieldable' => FALSE,
+      'entity keys' => array(
+          'id' => 'id',
+          'label' => 'title',
+      ),
+      'bundles' => array(),
+      'uri callback' => 'entity_class_uri',
+      'module' => 'vinculum',
+    ),
   );
 
   return $return;
