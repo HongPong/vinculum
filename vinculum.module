@@ -859,6 +859,7 @@ function _vinculum_extract_title_and_excerpt($url) {
  * Parse HTML to attempt to extract a title and excerpt.
  */
 function _vinculum_parse_content($html) {
+  require_once 'Parser.php';
   $formats = Mf2\parse($html);
   foreach ($formats['items'] as $item) {
     if ($item['type'][0] === 'h-entry') {
